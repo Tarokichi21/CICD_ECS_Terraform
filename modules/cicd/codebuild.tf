@@ -12,14 +12,13 @@ resource "aws_codebuild_project" "codebuild" {
     image                       = "aws/codebuild/standard:5.0"
     type                        = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
-    # 追加
     privileged_mode = true
   }
   source {
     type      = "CODEPIPELINE"
     buildspec = "buildspec.yml"
   }
-  # 追加
+
   logs_config {
     s3_logs {
       status   = "ENABLED"
@@ -55,7 +54,7 @@ resource "aws_iam_role_policy" "codebuild_policy" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      # 追加
+      
       {
         Effect = "Allow"
         Action = [
@@ -66,7 +65,6 @@ resource "aws_iam_role_policy" "codebuild_policy" {
       {
         Effect = "Allow"
         Action = [
-          # s3フルになっていて要調整
           "s3:GetObject",
           "s3:GetObjectVersion",
           "s3:GetBucketAcl",

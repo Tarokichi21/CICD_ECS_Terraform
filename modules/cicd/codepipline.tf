@@ -126,7 +126,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
         Resource = "*"
           # "${var.ecs_cluster_arn}",
           # "${var.ecs_service_id}",
-          # "arn:aws:ecs:ap-northeast-1:410362506341:task-definition/${var.ecs_task_definition_family}:*"
+          # "arn:aws:ecs:ap-northeast-1:xxxxxxxxxxxx:task-definition/${var.ecs_task_definition_family}:*"
       },
       {
         Effect   = "Allow"
