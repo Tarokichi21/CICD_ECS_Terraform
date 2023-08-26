@@ -1,6 +1,6 @@
-### CI/CD for Amazon ECS
+### CI/CD for Amazon ECS(RollingUpdate)
 
-ECSへの自動デプロイプラットフォームを構築するコードです
+ECSへの自動ローリングアップデートデプロイプラットフォームを構築するコードです
 
 参考サイト
 
