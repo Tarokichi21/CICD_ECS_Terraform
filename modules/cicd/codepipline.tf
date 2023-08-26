@@ -95,7 +95,6 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
           "${aws_s3_bucket.s3_artifact_store.arn}/*"
         ]
       },
-      # 追加
       { Effect = "Allow"
         Action = [
           "codecommit:GetRepository",
