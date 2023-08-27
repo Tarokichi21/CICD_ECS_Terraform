@@ -40,11 +40,11 @@ aws configure
 ### DockerImageをECRにPushする手順
 ```
 cd ../../
-docker build -t cicd-ecs-dev-ecr-repositry .
+docker build -t cicd-ecs-dev-ecr-repository .
 docker images
 aws ecr get-login-password | docker login --username AWS --password-stdin https://<aws_account_id>.dkr.ecr.<region>.amazonaws.com
-docker tag cicd-ecs-dev-ecr-repositry:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/cicd-ecs-dev-ecr-repositry:latest
-docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/cicd-ecs-dev-ecr-repositry:latest
+docker tag cicd-ecs-dev-ecr-repository:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/cicd-ecs-dev-ecr-repository:latest
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/cicd-ecs-dev-ecr-repository:latest
 ```
 
 ### CodeCommitへのpush
