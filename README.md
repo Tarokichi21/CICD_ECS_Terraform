@@ -1,6 +1,6 @@
 ### CI/CD for Amazon ECS(RollingUpdate)
 
-ECSへの自動ローリングアップデートデプロイプラットフォームを構築するコードです
+ECSへの自動ローリングアップデートデプロイプラットフォームを構築するTerraformのコードです
 
 参考サイト
 
@@ -40,14 +40,15 @@ aws configure
 ### DockerImageをECRにPushする手順
 ```
 cd ../../
-docker build -t html-sample .
+docker build -t cicd-ecs-dev-ecr-repositry .
 docker images
 aws ecr get-login-password | docker login --username AWS --password-stdin https://<aws_account_id>.dkr.ecr.<region>.amazonaws.com
-docker tag html-sample:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/html-sample:latest
-docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/html-sample:latest
+docker tag cicd-ecs-dev-ecr-repositry:latest <aws_account_id>.dkr.ecr.<region>.amazonaws.com/cicd-ecs-dev-ecr-repositry:latest
+docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/cicd-ecs-dev-ecr-repositry:latest
 ```
 
 ### CodeCommitへのpush
+### AWS CodeCommit の HTTPS Git 認証情報を事前に生成しておく必要があります
 ```
 cd sample
 git init
@@ -57,7 +58,7 @@ git commit -m "initial commit"
 git push origin master
 ```
 
-### (補足)コンフリクトが起きたら以下コマンド
+### (補足)コンフリクトが起きたら以下コマンドを実施する
 ```
 git config pull.rebase true
 ```

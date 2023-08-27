@@ -143,7 +143,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
   })
 }
 
-# Cloudwatch Event Rule
+# Cloudwatch_Event_Rule
 resource "aws_cloudwatch_event_rule" "cloudwatch_event_rule" {
   name = "${var.project_name}-${var.environment}-cloudwatch_event_rule"
 

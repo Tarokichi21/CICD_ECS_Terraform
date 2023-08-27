@@ -5,7 +5,7 @@ resource "aws_ecs_cluster" "ecs_cluster" {
 
 #TaskDefinition
 resource "aws_ecs_task_definition" "ecs_task_definition" {
-  family                   = "html-sample-fargate"
+  family                   = "fargate-sample"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.fargate_cpu
@@ -14,7 +14,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   container_definitions = jsonencode([
     {
-      "name" : "html-sample-fargate",
+      "name" : "fargate-sample",
       "image" : "${var.ecr_repo_url}",
       "essential" : true,
       "portMappings" : [
@@ -27,8 +27,8 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
       "logConfiguration" : {
         "logDriver" : "awslogs",
         "options" : {
-          "awslogs-region" : "ap-northeast-1",
-          "awslogs-stream-prefix" : "html-sample-fargate",
+          "awslogs-region" : "${var.region}",
+          "awslogs-stream-prefix" : "fargate-sample",
           "awslogs-group" : "${aws_cloudwatch_log_group.cloudwatch_log_group.name}"
         }
       },
@@ -40,7 +40,7 @@ resource "aws_ecs_task_definition" "ecs_task_definition" {
 
 #Service
 resource "aws_ecs_service" "ecs_service" {
-  name                               = "html-sample-fargate"
+  name                               = "fargate-sample"
   cluster                            = aws_ecs_cluster.ecs_cluster.id
   launch_type                        = "FARGATE"
   task_definition                    = data.aws_ecs_task_definition.task_definition.arn
@@ -60,7 +60,7 @@ resource "aws_ecs_service" "ecs_service" {
 
   load_balancer {
     target_group_arn = aws_lb_target_group.alb_tg.arn
-    container_name   = "html-sample-fargate"
+    container_name   = "fargate-sample"
     container_port   = 80
   }
 
@@ -78,7 +78,7 @@ data "aws_ecs_task_definition" "task_definition" {
 #Security_Group_ECS
 resource "aws_security_group" "ecs_fargate_sg" {
   vpc_id = aws_vpc.vpc.id
-  name   = "${var.project_name}-html-sample-fargate-sg"
+  name   = "${var.project_name}-fargate-sample-sg"
 
   ingress {
     from_port       = 80
