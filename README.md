@@ -1,6 +1,6 @@
 ### CI/CD for Amazon ECS(RollingUpdate)
 
-ECSへの自動ローリングアップデートデプロイプラットフォームを構築するTerraformのコードです
+ECSへの自動ローリングアップデートデプロイするプラットフォームを構築するTerraformのコードです
 
 参考サイト
 
