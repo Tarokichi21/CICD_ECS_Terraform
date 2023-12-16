@@ -69,7 +69,6 @@ resource "aws_iam_role_policy" "codebuild_policy" {
           "s3:GetObjectVersion",
           "s3:GetBucketAcl",
           "s3:GetBucketLocation",
-          # "s3:GetBucketVersioning",
           "s3:PutObjectAcl",
           "s3:PutObject"
         ]

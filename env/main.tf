@@ -1,8 +1,8 @@
 locals {
-  project_name = "cicd-ecs"
+  project_name = "ecscicd"
   environment  = "dev"
   region       = "ap-northeast-1"
-  account_id   = "xxxxxxxxxxxx"
+  account_id   = "xxxxxxxxxxxxxx"
 }
 
 provider "aws" {
@@ -13,7 +13,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     profile = "terraform"
-    bucket  = "cicd-ecs0001"
+    bucket  = "ecscicd00001"
     key     = "terraform.tfstate"
     region  = "ap-northeast-1"
   }

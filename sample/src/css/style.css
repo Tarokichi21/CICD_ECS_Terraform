@@ -14,7 +14,7 @@ nav {
 nav a {
     font-weight: bold;
     text-decoration: none;
-    font-size: 34px;
+    font-size: 30px;
     color: black;
     font-family: "Noto Sans JP", sans-serif;
 }
@@ -59,7 +59,7 @@ div {
 }
 
 .mainpic {
-    width: 50%;
+    width: 40%;
     height: auto;
     margin: 0 auto;
 
@@ -94,7 +94,7 @@ img {
     padding-left: 40px;
 }
 
-.Garally {
+.Gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -105,12 +105,29 @@ img {
 .item {
     padding-bottom: 60px;
     width: 25%;
+    box-sizing: border-box; 
+    text-align: center;
+}
+
+.item img {
+    width: 240px;
+    height: 260px;
+}
+
+.item p {
+    margin: 10px 0;
 }
 
 .item_center {
+    width: 280px;
     padding-right: 20px;
     padding-left: 20px;
 }
+
+.item_center img {
+    width: 240px;
+}
+
 
 footer p {
     text-align: center;
@@ -123,5 +140,11 @@ footer p {
         width: 100%;
         text-align: center;
         padding-bottom: 40px;
+    }
+    .mainpic {
+        width: 60%;
+        height: auto;
+        margin: 0 auto;
+    
     }
 }
