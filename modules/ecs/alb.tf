@@ -20,7 +20,7 @@ resource "aws_security_group" "alb_sg" {
 
 #ALB
 resource "aws_lb" "alb" {
-  name               = "${var.project_name}-${var.environment}-alb-lb"
+  name               = "${var.project_name}-${var.environment}-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
