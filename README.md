@@ -10,6 +10,14 @@ ECSへの自動ローリングアップデートデプロイプラットフォ�
 
 [③AWS CI/CD for Amazon ECSハンズオン](https://pages.awscloud.com/rs/112-TZM-766/images/AWS_CICD_ECS_Handson.pdf)
 
+## 事前準備
+### /env/main.tfのaccount_idをご自身のアカウントIDに変更してください
+
+```
+locals{
+  account_id   = "xxxxxxx"←この部分
+}
+```
 
 ### .tfstate用s３作成
 ```
@@ -48,7 +56,7 @@ docker push <aws_account_id>.dkr.ecr.<region>.amazonaws.com/ecscicd-dev-ecr-repo
 ```
 
 ### RemoteSSHで接続しているEC2でCodeCommitへのpush
-### AWS CodeCommit の HTTPS Git 認証情報を事前に生成しておく必要があります
+#### ※AWS CodeCommit の HTTPS Git 認証情報を事前に生成しておく必要があります
 ```
 cd sample
 git init
